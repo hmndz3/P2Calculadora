@@ -1,0 +1,154 @@
+/* variables de color del tema */
+:root {
+  --bg: #0f0f1a;
+  --calc-bg: #1e1e2e;
+  --display-bg: #13131f;
+  --display-text: #e8e8f0;
+  --btn-number: #2d2d42;
+  --btn-number-hover: #3a3a54;
+  --btn-operator: #4a3f6b;
+  --btn-operator-hover: #5c4f84;
+  --btn-action: #252538;
+  --btn-action-hover: #333349;
+  --btn-equal: #7c5cbf;
+  --btn-equal-hover: #9370d8;
+  --text-primary: #e8e8f0;
+  --text-operator: #c5b3f0;
+  --text-action: #a8a8c0;
+  --text-error: #ff6b8a;
+  --shadow-calc: 0 24px 60px rgba(0, 0, 0, 0.6);
+  --shadow-btn: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --radius-calc: 24px;
+  --radius-btn: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* centra la calculadora en pantalla */
+.app {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.calculator {
+  background: var(--calc-bg);
+  border-radius: var(--radius-calc);
+  box-shadow: var(--shadow-calc);
+  padding: 20px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* pantalla de la calculadora */
+.display {
+  background: var(--display-bg);
+  border-radius: 16px;
+  padding: 20px 24px 16px;
+  text-align: right;
+  min-height: 90px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.display-value {
+  color: var(--display-text);
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  line-height: 1;
+  word-break: break-all;
+}
+
+.display-error {
+  color: var(--text-error);
+  font-size: 36px;
+  font-weight: 400;
+}
+
+/* grilla de botones */
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* boton base */
+.btn {
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  height: 64px;
+  box-shadow: var(--shadow-btn);
+  transition: background 0.12s ease, transform 0.08s ease;
+  outline: none;
+}
+
+.btn:active {
+  transform: scale(0.94);
+}
+
+/* 0 ocupa dos columnas */
+.btn[aria-label="0"] {
+  grid-column: span 2;
+}
+
+.btn-number {
+  background: var(--btn-number);
+  color: var(--text-primary);
+}
+
+.btn-number:hover {
+  background: var(--btn-number-hover);
+}
+
+.btn-operator {
+  background: var(--btn-operator);
+  color: var(--text-operator);
+}
+
+.btn-operator:hover {
+  background: var(--btn-operator-hover);
+}
+
+/* igual tiene color mas llamativo */
+.btn-operator[aria-label="="] {
+  background: var(--btn-equal);
+  color: #fff;
+}
+
+.btn-operator[aria-label="="]:hover {
+  background: var(--btn-equal-hover);
+}
+
+.btn-action {
+  background: var(--btn-action);
+  color: var(--text-action);
+}
+
+.btn-action:hover {
+  background: var(--btn-action-hover);
+}
+
+/* focus visible para navegacion por teclado */
+.btn:focus-visible {
+  outline: 2px solid var(--btn-equal);
+  outline-offset: 2px;
+}
