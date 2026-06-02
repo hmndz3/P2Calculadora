@@ -1,1 +1,1 @@
-import '@testing-library/jest-dom'
+// setup vacio, los tests no necesitan DOM
